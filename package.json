@@ -1,0 +1,8 @@
+{
+  "name": "ritu-rhythms",
+  "version": "10.0.0",
+  "private": true,
+  "description": "Ritu Rhythms menstrual health website with its own local/server data portal",
+  "scripts": {"start":"node server.js"},
+  "engines": {"node": ">=18"}
+}

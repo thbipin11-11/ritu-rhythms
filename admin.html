@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ritu Rhythms | Admin Portal</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.admin-page{min-height:100vh;background:linear-gradient(135deg,#f8f5ef,#e8f0ec);padding:40px 20px}
+.admin-shell{max-width:1180px;margin:auto}
+.admin-card{background:#fffdf9;border:1px solid #dfe5e1;border-radius:24px;padding:28px;box-shadow:0 20px 60px rgba(43,58,52,.09);margin-bottom:22px}
+.admin-header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.admin-brand{display:flex;align-items:center;gap:12px}.admin-brand img{width:52px;height:52px;object-fit:contain}
+.admin-brand h1{margin:0}.admin-brand p{margin:3px 0 0;color:#68736f}
+.admin-form{max-width:480px}.admin-form label{display:block;margin:14px 0;font-weight:700}.admin-form input{width:100%;padding:13px 14px;margin-top:7px;border:1px solid #dfe5e1;border-radius:12px;font:inherit}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.admin-btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;background:#513f4b;color:#fff}.admin-btn.alt{background:#e8f0ec;color:#24302d}
+.admin-status{color:#68736f;min-height:22px}.dashboard{display:none}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}.stat{padding:20px;border-radius:18px;background:#f5dfe1}.stat strong{display:block;font-size:2rem}.table-wrap{overflow:auto;border:1px solid #dfe5e1;border-radius:16px;margin-top:12px}.data-table{width:100%;border-collapse:collapse;min-width:680px}.data-table th,.data-table td{padding:12px;border-bottom:1px solid #e8ece9;text-align:left;vertical-align:top}.data-table th{background:#e8f0ec}.note{padding:14px 16px;border-left:4px solid #d99aa1;background:#f8f5ef;border-radius:10px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="admin-page">
+<div class="admin-shell">
+<div class="admin-card admin-header">
+  <div class="admin-brand"><img src="assets/ritu-rhythms-logo.png" alt="Ritu Rhythms"><div><h1>Ritu Rhythms Admin</h1><p>Private visitor-data dashboard</p></div></div>
+  <a class="btn secondary" href="index.html">← Back to Website</a>
+</div>
+
+<section id="loginCard" class="admin-card">
+  <h2>Administrator Login</h2>
+  <p>Use the administrator credentials to view submissions stored in the Ritu Rhythms portal. No Google Sheet is used.</p>
+  <form id="adminLogin" class="admin-form">
+    <label>Admin ID<input id="adminUser" autocomplete="username" required placeholder="Admin ID"></label>
+    <label>Password<input id="adminPassword" type="password" autocomplete="current-password" required placeholder="Password"></label><label class="check-row"><input id="showPassword" type="checkbox"> Show password</label>
+    <div class="admin-actions"><button class="admin-btn" type="submit">Sign in</button></div>
+    <p id="loginStatus" class="admin-status"></p>
+  </form>
+  <div class="note"><strong>Security note:</strong> This portal is designed for the Ritu Rhythms prototype. Before public launch, replace the prototype credentials with a proper authentication system and restrict administrator access.</div>
+</section>
+
+<section id="dashboard" class="dashboard">
+  <div class="admin-card admin-header">
+    <div><h2>Visitor Data</h2><p class="admin-status">Data shown here is stored by the Ritu Rhythms backend.</p></div>
+    <div class="admin-actions"><button id="refreshBtn" class="admin-btn alt">Refresh data</button><button id="logoutBtn" class="admin-btn">Log out</button></div>
+  </div>
+
+  <div class="admin-card">
+    <h3>Our Impact — Update Numbers</h3>
+    <p>Change these verified figures here. After saving, the public website will use the updated numbers from the portal database.</p>
+    <form id="impactForm" class="impact-admin-form">
+      <label>Schools reached<input id="impact_schools" type="number" min="0" required></label>
+      <label>Students educated<input id="impact_students" type="number" min="0" required></label>
+      <label>Sessions conducted<input id="impact_sessions" type="number" min="0" required></label>
+      <label>Volunteers<input id="impact_volunteers" type="number" min="0" required></label>
+      <button class="admin-btn" type="submit">Save Impact Numbers</button>
+    </form>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span>Questions</span><strong id="questionCount">0</strong></div>
+    <div class="stat"><span>School requests</span><strong id="schoolCount">0</strong></div>
+  </div>
+  <div class="admin-card">
+    <h3>Questions / Ask Ritu</h3><div id="questionsTable" class="table-wrap"></div>
+  </div>
+  <div class="admin-card">
+    <h3>School Program Requests</h3><div id="schoolsTable" class="table-wrap"></div>
+  </div>
+</section>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-config.js"></script><script src="js/config.js"></script><script src="js/admin.js"></script>
+<script>document.getElementById("showPassword")?.addEventListener("change",function(){document.getElementById("adminPassword").type=this.checked?"text":"password";});</script></body>
+</html>

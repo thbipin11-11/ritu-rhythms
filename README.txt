@@ -1,0 +1,1 @@
+Place approved logos, illustrations, icons and licensed media in this folder. The current prototype uses CSS visuals and no external image assets.
